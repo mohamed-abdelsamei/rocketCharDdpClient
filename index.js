@@ -1,22 +1,22 @@
-const DDPClient = require('ddp')
-const config = require('./config')
+const DDPClient = require("ddp"),
+  config = require("./config"),
 
-const ddpclient = new DDPClient(config.rocket)
-const methods = require('./methods')
+  ddpclient = new DDPClient(config.rocket),
+  methods = require("./methods");
 
 ddpclient.connect((error, wasReconnect) => {
   // If autoReconnect is true, this callback will be invoked each time
   // a server connection is re-established
   if (error) {
-    console.log('DDP connection error!')
-    return
+    console.log("DDP connection error!");
+    return;
   }
 
   if (wasReconnect) {
-    console.log('Reestablishment of a connection.')
+    console.log("Reestablishment of a connection.");
   }
 
-  console.log('connected!')
+  console.log("connected!");
 
   setTimeout(() => {
     /*
@@ -24,19 +24,26 @@ ddpclient.connect((error, wasReconnect) => {
          */
     methods.login(ddpclient)
       .then((data) => {
-        console.log('authenticated', data)
-
-        methods.sendMessage(ddpclient)
-          .then(messageSent => { console.log(messageSent) })
-          .catch(err => { console.log(err) })
+        console.log("authenticated", data);
+        methods.sentMessgeWithCritical(ddpclient)
+          .then((messageSent) => {
+            console.log(messageSent);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
-      .catch((err) => { console.error('login error', err) })
-  }, 3000)
-})
+      .catch((err) => {
+        console.error("login error", err);
+      });
+  }, 3000);
+});
 
 /*
  * Useful for debugging and learning the ddp protocol
  */
-ddpclient.on('message', (msg) => {
-  console.log(`ddp message: ${msg}`)
-})
+let ts = new Date(Date.now());
+
+ddpclient.on("message", (msg) => {
+  console.log(`${ts.toLocaleString()} ddp message: ${msg}`);
+});

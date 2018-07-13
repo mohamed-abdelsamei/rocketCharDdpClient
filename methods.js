@@ -1,23 +1,36 @@
-const config = require('./config')
-var Random = require('ddp-random')
+const config = require("./config"),
+	// var Random = require('ddp-random')
 
-var random = Random.createWithSeeds('randomSeed')
+	// var random = Random.createWithSeeds('randomSeed')
 
-const loginCreds = {
-  user: { email: config.rocket.email },
-  password: config.rocket.password
-}
+	loginCreds = {
+		"user": { "email": config.rocket.email },
+		"password": config.rocket.password
+	};
+
 module.exports = {
-  login: ddpclient => new Promise((resolve, reject) => {
-    ddpclient.call('login', [loginCreds], (err, result) => {
-      if (err) return reject(err)
-      resolve(result)
-    })
-  }),
-  sendMessage: ddpclient => new Promise((resolve, reject) => {
-    ddpclient.callWithRandomSeed('sendMessage', [{ '_id': random.id, 'rid': 'GENERAL', 'msg': 'hello' }], 'randomSeed', (err, result) => {
-      if (err) return reject(err)
-      resolve(result)
-    })
-  })
-}
+	"login": (ddpclient) => new Promise((resolve, reject) => {
+		ddpclient.call("login", [loginCreds], (err, result) => {
+			if (err) {
+				return reject(err);
+			}
+			resolve(result);
+		});
+	}),
+	"sendMessage": (ddpclient) => new Promise((resolve, reject) => {
+		ddpclient.call("sendMessage", [{ "rid": "GENERAL", "msg": "hello" }], (err, result) => {
+			if (err) {
+				return reject(err);
+			}
+			resolve(result);
+		});
+	}),
+	"sentMessgeWithCritical": (ddpclient) => new Promise((resolve, reject) => {
+		ddpclient.call("sendMessage", [{ "rid": "GENERAL", "msg": "hello", "criticals": ["vCgmWXdWRCaKWK4k8"] }], (err, result) => {
+			if (err) {
+				return reject(err);
+			}
+			resolve(result);
+		});
+	})
+};
