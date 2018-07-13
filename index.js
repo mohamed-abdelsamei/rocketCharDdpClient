@@ -25,6 +25,10 @@ ddpclient.connect((error, wasReconnect) => {
     methods.login(ddpclient)
       .then((data) => {
         console.log('authenticated', data)
+
+        methods.sendMessage(ddpclient)
+          .then(messageSent => { console.log(messageSent) })
+          .catch(err => { console.log(err) })
       })
       .catch((err) => { console.error('login error', err) })
   }, 3000)
