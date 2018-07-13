@@ -15,7 +15,7 @@ module.exports = {
     })
   }),
   sendMessage: ddpclient => new Promise((resolve, reject) => {
-    ddpclient.call('sendMessage', [{ '_id': random.id, 'rid': 'GENERAL', 'msg': 'yyyyyyy' }], (err, result) => {
+    ddpclient.callWithRandomSeed('sendMessage', [{ '_id': random.id, 'rid': 'GENERAL', 'msg': 'hello' }], 'randomSeed', (err, result) => {
       if (err) return reject(err)
       resolve(result)
     })
