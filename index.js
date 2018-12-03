@@ -26,20 +26,14 @@ ddpclient.connect((error, wasReconnect) => {
       .then((data) => {
         console.log("authenticated", data);
 
-        methods.loadHistory(ddpclient)
+        methods.getRoomRoles(ddpclient)
           .then((messageSent) => {
             console.log(messageSent);
           })
           .catch((err) => {
             console.log(err);
           });
-        // ddpclient.subscribe('5befc78bf20c81294063e6ba/team-changed',                  // name of Meteor Publish function to subscribe to
-        //   [],                       // any parameters used by the Publish function
-        //   function () {             // callback when the subscription is complete
-        //     console.log("Subscription Complete.\n");
-        //   });
       })
-
       .catch((err) => {
         console.error("login error", err);
       });
