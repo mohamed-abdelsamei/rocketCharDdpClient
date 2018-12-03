@@ -1,7 +1,7 @@
 const DDPClient = require("ddp"),
   config = require("./config"),
 
-  ddpclient = new DDPClient(config.rocket[0]),
+  ddpclient = new DDPClient(config.rocket[1]),
   methods = require("./methods");
 
 ddpclient.connect((error, wasReconnect) => {
@@ -22,22 +22,22 @@ ddpclient.connect((error, wasReconnect) => {
     /*
          * Call a Meteor Method
          */
-    methods.login(ddpclient)
+    methods.userLogin(ddpclient)
       .then((data) => {
         console.log("authenticated", data);
 
-        methods.loadHistory(ddpclient)
-          .then((messageSent) => {
-            console.log(messageSent);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-        // ddpclient.subscribe('5befc78bf20c81294063e6ba/team-changed',                  // name of Meteor Publish function to subscribe to
-        //   [],                       // any parameters used by the Publish function
-        //   function () {             // callback when the subscription is complete
-        //     console.log("Subscription Complete.\n");
+        // methods.createPrivateGroup(ddpclient)
+        //   .then((messageSent) => {
+        //     console.log(messageSent);
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
         //   });
+        ddpclient.subscribe('5befc78bf20c81294063e6ba/team-changed',                  // name of Meteor Publish function to subscribe to
+          [],                       // any parameters used by the Publish function
+          function () {             // callback when the subscription is complete
+            console.log("Subscription Complete.\n");
+          });
       })
 
       .catch((err) => {
