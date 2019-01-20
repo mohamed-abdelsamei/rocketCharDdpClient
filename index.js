@@ -26,7 +26,7 @@ ddpclient.connect((error, wasReconnect) => {
       .then((data) => {
         console.log("authenticated", data);
 
-        methods.getRoomRoles(ddpclient)
+        methods.FCM_push(ddpclient)
           .then((messageSent) => {
             console.log(messageSent);
           })
