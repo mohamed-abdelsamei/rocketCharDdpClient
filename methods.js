@@ -67,6 +67,7 @@ module.exports = {
 				return reject(err);
 			}
 			resolve(result);
+
 		});
 	}),
 	"removeMessage": (ddpclient) => new Promise((resolve, reject) => {
@@ -78,7 +79,7 @@ module.exports = {
 		});
 	}),
 	"readMessages": (ddpclient) => new Promise((resolve, reject) => {
-		ddpclient.call("readMessages", ["Wejh2dokQNgFSuaqauWvPdt3txdH2Ki5Xt"], (err, result) => {
+		ddpclient.call("readMessages", ["GENERAL"], (err, result) => {
 			if (err) {
 				return reject(err);
 			}
@@ -86,7 +87,7 @@ module.exports = {
 		});
 	}),
 	"deliverMessage": (ddpclient) => new Promise((resolve, reject) => {
-		ddpclient.call("deliverMessage", ["Wejh2dokQNgFSuaqauWvPdt3txdH2Ki5Xt"], (err, result) => {
+		ddpclient.call("deliverMessage", ["GENERAL"], (err, result) => {
 			if (err) {
 				return reject(err);
 			}
@@ -94,7 +95,7 @@ module.exports = {
 		});
 	}),
 	"getReadReceipts": (ddpclient) => new Promise((resolve, reject) => {
-		ddpclient.call("getReadReceipts", [{ "messageId": "GtGoDSeKxiAcLsT6F" }], (err, result) => {
+		ddpclient.call("getReadReceipts", [{ "messageId": "vBo5sZPDd4xwowoCG" }], (err, result) => {
 			if (err) {
 				return reject(err);
 			}
@@ -102,7 +103,7 @@ module.exports = {
 		});
 	}),
 	"getDeliveryReceipts": (ddpclient) => new Promise((resolve, reject) => {
-		ddpclient.call("getDeliveryReceipts", [{ "messageId": "GtGoDSeKxiAcLsT6F" }], (err, result) => {
+		ddpclient.call("getDeliveryReceipts", [{ "messageId": "vBo5sZPDd4xwowoCG" }], (err, result) => {
 			if (err) {
 				return reject(err);
 			}
@@ -158,7 +159,6 @@ module.exports = {
 		});
 	}),
 
-
 	"subscriptionsGet": (ddpclient) => new Promise((resolve, reject) => {
 		ddpclient.call("subscriptions/get", [{ "messageId": "FbmAM4TLRfKLgQ49t" }], (err, result) => {
 			if (err) {
@@ -183,8 +183,8 @@ module.exports = {
 			resolve(result);
 		});
 	}),
-	"FCM_push": (ddpclient) => new Promise((resolve, reject) => {
-		ddpclient.call("FCM.push", [{ title: "hi", body: "hellloooooooooo", data: {}, registration_ids: "d5Oq1wQqCAk:APA91bERmx3pXk2FVRyus0T1tN1mA4JqLb5-CcNUVjWGtwNPoQPq9cFnK9QU4D2ddhO0Cq2ksakrOnJalOwLSP4WNBOavuZAp4cHuvpNnTb60OT7D0wRiDG5DOH7kDt3p-2cf_FKnScu" }], (err, result) => {
+	"saveRoomSettings": (ddpclient) => new Promise((resolve, reject) => {
+		ddpclient.call("saveRoomSettings", ['oZRd6pxnNALpKMxFi','roomImage','http://localhost'], (err, result) => {
 			if (err) {
 				return reject(err);
 			}
