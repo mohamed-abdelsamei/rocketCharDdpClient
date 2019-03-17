@@ -79,15 +79,15 @@ module.exports = {
 		});
 	}),
 	"readMessages": (ddpclient) => new Promise((resolve, reject) => {
-		ddpclient.call("readMessages", ["GENERAL"], (err, result) => {
+		ddpclient.call("readMessages", ["Wejh2dokQNgFSuaqauWvPdt3txdH2Ki5Xt"], (err, result) => {
 			if (err) {
 				return reject(err);
 			}
 			resolve(result);
 		});
 	}),
-	"deliverMessage": (ddpclient) => new Promise((resolve, reject) => {
-		ddpclient.call("deliverMessage", ["GENERAL"], (err, result) => {
+	"deliverMessages": (ddpclient) => new Promise((resolve, reject) => {
+		ddpclient.call("deliverMessages", ["Wejh2dokQNgFSuaqauWvPdt3txdH2Ki5Xt"], (err, result) => {
 			if (err) {
 				return reject(err);
 			}
@@ -95,7 +95,7 @@ module.exports = {
 		});
 	}),
 	"getReadReceipts": (ddpclient) => new Promise((resolve, reject) => {
-		ddpclient.call("getReadReceipts", [{ "messageId": "vBo5sZPDd4xwowoCG" }], (err, result) => {
+		ddpclient.call("getReadReceipts", [{ "messageId": "8YGbAvKpuegitdovM" }], (err, result) => {
 			if (err) {
 				return reject(err);
 			}
@@ -103,7 +103,7 @@ module.exports = {
 		});
 	}),
 	"getDeliveryReceipts": (ddpclient) => new Promise((resolve, reject) => {
-		ddpclient.call("getDeliveryReceipts", [{ "messageId": "vBo5sZPDd4xwowoCG" }], (err, result) => {
+		ddpclient.call("getDeliveryReceipts", [{ "messageId": "8YGbAvKpuegitdovM" }], (err, result) => {
 			if (err) {
 				return reject(err);
 			}
@@ -184,11 +184,20 @@ module.exports = {
 		});
 	}),
 	"saveRoomSettings": (ddpclient) => new Promise((resolve, reject) => {
-		ddpclient.call("saveRoomSettings", ['oZRd6pxnNALpKMxFi','roomImage','http://localhost'], (err, result) => {
+		ddpclient.call("saveRoomSettings", ['oZRd6pxnNALpKMxFi', 'roomImage', 'http://localhost'], (err, result) => {
+			if (err) {
+				return reject(err);
+			}
+			resolve(result);
+		});
+	}),	
+	"removeRoomHistory": (ddpclient) => new Promise((resolve, reject) => {
+		ddpclient.call("removeRoomHistory", ['jXaB2FPJx6QAQM8Jn'], (err, result) => {
 			if (err) {
 				return reject(err);
 			}
 			resolve(result);
 		});
 	}),
+	
 };

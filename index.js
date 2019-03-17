@@ -26,7 +26,7 @@ ddpclient.connect((error, wasReconnect) => {
       .then((data) => {
         console.log("authenticated", data);
 
-        methods.saveRoomSettings(ddpclient)
+        methods.removeRoomHistory(ddpclient)
           .then((messageSent) => {
             console.log(messageSent);
           })

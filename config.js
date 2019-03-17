@@ -17,6 +17,7 @@ module.exports = {
         // Use a full url instead of a set of `host`, `port` and `ssl`
         // do not set `useSockJs` option if `url` is used
         "url": "wss://example.com/websocket",
+        // "email": "admin@admin.com",
         "email": "admin@admin.com",
         "password": "admin"
     },
