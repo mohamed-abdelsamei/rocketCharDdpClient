@@ -25,8 +25,12 @@ ddpclient.connect((error, wasReconnect) => {
     methods.login(ddpclient)
       .then((data) => {
         console.log("authenticated", data);
-
-        methods.removeRoomHistory(ddpclient)
+        // methods['sendMessageReply'](ddpclient)
+        // methods['sentMessgeWithCritical'](ddpclient)
+        methods['sendMessage'](ddpclient)
+          // methods['createPrivateGroup'](ddpclient)
+          // methods['getDeliveryReceipts'](ddpclient)
+          // methods['deliverMessages'](ddpclient)
           .then((messageSent) => {
             console.log(messageSent);
           })
@@ -53,3 +57,12 @@ let ts = new Date(Date.now());
 ddpclient.on("message", (msg) => {
   console.log(`${ts.toLocaleString()} ddp message: ${msg}`);
 });
+
+
+// ddpclient.on(
+//   '5d4168c2e39a0d66defa4adf/user-changed',                 // name of Meteor Publish function to subscribe to
+//   function (data) {             // callback when the subscription is complete
+//     console.log('posts complete:');
+//     console.log(data);
+//   }
+// );
